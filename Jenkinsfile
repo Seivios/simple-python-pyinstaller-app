@@ -10,6 +10,12 @@ pipeline {
                     image 'python:2-alpine'
                 }
             }
+	stage('Docker Build') {
+            agent any
+          steps {
+            sh 'docker build -t python:latest .'
+          }
+        }
             steps {
                 sh 'python -m py_compile sources/add2vals.py sources/calc.py'
                 stash(name: 'compiled-results', includes: 'sources/*.py*')
