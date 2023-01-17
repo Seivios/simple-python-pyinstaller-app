@@ -11,15 +11,15 @@ pipeline {
                 }
             }
             stage('Build Docker Image') {
-            steps {
-                sh 'docker build -t docker-python:lastest .'
+                steps {
+                    sh 'docker build -t docker-python:lastest .'
+                }
             }
-        }
         stage('Push Docker Image') {
-            steps {
-                sh 'docker push docker-python'
+                steps {
+                    sh 'docker push docker-python'
+                }
             }
-        }
 
             steps {
                 sh 'python -m py_compile sources/add2vals.py sources/calc.py'
