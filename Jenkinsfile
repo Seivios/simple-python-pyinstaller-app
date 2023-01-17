@@ -2,7 +2,7 @@ pipeline {
 environment {
 registry = "seivios/test1"
 registryCredential = 'dockerhub_id'
-dockerImage = ''
+dockerImage = 'dockerpython'
 }
 stage('Building our image') {
 steps{
