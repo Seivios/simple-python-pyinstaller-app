@@ -12,12 +12,12 @@ pipeline {
             }
             stage('Build Docker Image') {
             steps {
-                sh 'docker build -t my-image .'
+                sh 'docker build -t docker-python:lastest .'
             }
         }
         stage('Push Docker Image') {
             steps {
-                sh 'docker push my-image'
+                sh 'docker push docker-python'
             }
         }
 
