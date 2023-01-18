@@ -22,11 +22,12 @@ dockerImage.push()
 }
 }
 }
-stage('Run our image')
+stage('Run our image') {
 steps{
 script {
 docker.withRegistry( '', registryCredential ) {
 dockerImage.run()
+}
 }
 }
 }
