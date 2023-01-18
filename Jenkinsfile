@@ -31,6 +31,11 @@ dockerImage.run()
 }
 }
 }
+stage('Ping) {
+steps{
+sh "ping -c 4 google.com"
+}
+}
 stage('Cleaning up') {
 steps{
 sh "docker rmi $registry:$BUILD_NUMBER"
