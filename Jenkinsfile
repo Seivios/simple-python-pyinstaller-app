@@ -4,15 +4,19 @@ registry = "seivios/test1"
 registryCredential = 'dockerhub_id'
 dockerImage = ''
 }
+node {
+  stage('SCM') {
+    git 'https://github.com/foo/bar.git'
+  }
+  stage('SonarQube analysis') {
+    def scannerHome = tool 'SonarScanner 4.0';
+    withSonarQubeEnv('My SonarQube Server') { // If you have configured more than one global server connection, you can specify its name
+      sh "${scannerHome}/bin/sonar-scanner"
+    }
+  }
+}
 agent any
 stages {
-stage('SonarQube analysis') {
-steps{
- withSonarQubeEnv('SonarQube') {
-            sh './gradlew sonarqube'
-}
-}
-}
 stage('Building our image') {
 steps{
 script {
