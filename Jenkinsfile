@@ -6,6 +6,13 @@ dockerImage = ''
 }
 agent any
 stages {
+stage('SonarQube analysis') {
+steps{
+ withSonarQubeEnv('SonarQube') {
+            sh './gradlew sonarqube'
+}
+}
+}
 stage('Building our image') {
 steps{
 script {
@@ -27,15 +34,6 @@ steps{
 script {
 docker.withRegistry( '', registryCredential ) {
 dockerImage.run()
-}
-}
-}
-}
-stage('Ping') {
-steps{
-script {
-docker.withRegistry( '', registryCredential ) {
-dockerImage.ping()
 }
 }
 }
