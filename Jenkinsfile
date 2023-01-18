@@ -33,7 +33,11 @@ dockerImage.run()
 }
 stage('Ping') {
 steps{
-sh "ping -c 4 localhost"
+script {
+docker.withRegistry( '', registryCredential ) {
+dockerImage.ping()
+}
+}
 }
 }
 stage('Cleaning up') {
