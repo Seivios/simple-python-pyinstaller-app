@@ -26,7 +26,6 @@ steps {
 waitForQualityGate abortPipeline: true
 }
 }
-}
 stage('Building our image') {
 steps{
 script {
