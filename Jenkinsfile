@@ -5,6 +5,7 @@ registryCredential = 'dockerhub_id'
 dockerImage = ''
 }
 agent any
+stages {
 node {
   stage('SCM') {
     checkout scm
@@ -16,7 +17,6 @@ node {
     }
   }
 }
-stages {
 stage('Building our image') {
 steps{
 script {
