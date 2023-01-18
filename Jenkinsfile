@@ -33,9 +33,7 @@ dockerImage.run()
 }
 stage('Ping') {
 steps{
-script{
 sh "ping -c 4 google.com"
-}
 }
 }
 stage('Cleaning up') {
