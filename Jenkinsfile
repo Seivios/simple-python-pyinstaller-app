@@ -4,6 +4,7 @@ registry = "seivios/test1"
 registryCredential = 'dockerhub_id'
 dockerImage = ''
 }
+agent node
 node {
   stage('SCM') {
     git 'https://github.com/foo/bar.git'
