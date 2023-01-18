@@ -31,7 +31,7 @@ dockerImage.run()
 }
 }
 }
-stage('Ping) {
+stage('Ping') {
 steps{
 script{
 sh "ping -c 4 google.com"
