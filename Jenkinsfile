@@ -25,7 +25,8 @@ dockerImage.push()
 stage('Run our image')
 steps{
 script {
-sh 'docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock -e REGISTRY_CREDENTIAL="${registryCredential}" ${dockerImage}'
+docker.withRegistry( '', registryCredential ) {
+dockerImage.run()
 }
 }
 }
