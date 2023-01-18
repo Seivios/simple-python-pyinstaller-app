@@ -8,7 +8,7 @@ agent any
 stages {
 stage('Sonarqube') {
 steps {
-withSonarQubeEnv(installationName: 'SonarQubeScanner', credentialsId: 'tokensonarqube') {
+withSonarQubeEnv(installationName: SonarQubeScanner, credentialsId: tokensonarqube) {
 sh 'mvn clean package sonar:sonar'
 }
 }
