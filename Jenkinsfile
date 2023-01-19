@@ -6,26 +6,15 @@ dockerImage = ''
 }
 agent any
 stages {
-stage('SonarQube analysis 1') {
-            steps {
-                sh 'mvn clean package sonar:sonar'
-            }
-        }
-        stage("Quality Gate 1") {
-            steps {
-                waitForQualityGate abortPipeline: true
-            }
-        }
-        stage('SonarQube analysis 2') {
-            steps {
-                sh 'gradle sonarqube'
-            }
-        }
-        stage("Quality Gate 2") {
-            steps {
-                waitForQualityGate abortPipeline: true
-            }
-        }
+stage('SCM') {
+checkout scm
+}
+stage('SonarQube Analysis') {
+def scannerHome = tool 'SonarScanner';
+withSonarQubeEnv() {
+sh "${scannerHome}/bin/sonar-scanner"
+}
+}
 stage('Building our image') {
 steps{
 script {
